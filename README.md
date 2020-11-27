@@ -3,14 +3,28 @@ When looking at task for classifying something where hierarchies were intrinsic 
 
 
 The concept is quite simple: create general architecture for groupings of classes depedent on each other. So starting off with a basic concept of model, I looked to make something in pytorch that represented my idea.
-The architecture can be visualized as so:
+
+# Example
+Let us take an image geolocation problem where we want the location for city, county, and districy. We will call these groupings a,b,c respectively. Given an image input, we want to predict all 3 classes but also need an architecture in which these relationships are properly represented. The network architecture below illustrates a possible solution (that this package will atttempt to implement with a degree of adaptability).
+The architecture can be visualized as so with an input image:
 ![Network Architecture](https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/network.svg)
 
  where the class heirarchy is like so
 
 ![Class Heirarchy](https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/tree.svg)
 
-
+The class heirarchy is a similar structure to that within the this package. Each node has tuple of a named grouping and the number of classes within that grouping. This the reason for the sizes in the final outputs in the network architecture. The large green plus signs within circles are used to indicate concatenation of the two input (green arrowed lines) leading into them. This is why the sections for class b and c have input size 4096 + 1024 = 5120.
+# Installation
+Using pip makes this installation easy and simple. This can be installed through 
+```
+pip install 
+```
+The repository can also be cloned and then made with pip install. This can be dones like so:
+```
+pip install
+```
+Finally, this repository can simply downloaded and imported as python code since there are essentially only two required classes here.
+# Getting Started
 This architecture allows for simple yet adaptable hierarchal classifications for basic tasks that involve finite hierarchies. The package was targeted towards image classifcations where there are multiple groups to classify something as, but may serve other purposes equally well. Below is an example of how to use the package along with the defined class:
 ```
 from simple_hierarchy.hierarchal_model import HierarchalModel 

@@ -2,6 +2,7 @@ import torch
 from tree import Tree, Node
 from typing import Dict, Tuple, List, Optional
 import torch.nn as nn
+from collections import OrderedDict 
 
 class HierarchalModel(nn.Module):
     r"""Creates a model that is designed to handle hierarchal classes. It is targeted towards
@@ -37,7 +38,7 @@ class HierarchalModel(nn.Module):
             self.base_model = base_model
         else:
             self.base_model = nn.Sequential(*model[0:len(model) - k])
-        self.last_layers = dict()
+        self.last_layers = OrderedDict()
         self.tree = _hierarchy_to_tree(hierarchy)
         self.output_order = output_order
         if dim_to_concat:
