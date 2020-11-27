@@ -4,13 +4,18 @@ When looking at task for classifying something where hierarchies were intrinsic 
 
 The concept is quite simple: create general architecture for groupings of classes depedent on each other. So starting off with a basic concept of model, I looked to make something in pytorch that represented my idea.
 The architecture can be visualized as so:
-<object data="test.pdf" type="application/pdf" width="85%" height="85%">
-    <embed src="test.pdf">
+<object data="https://github.com/rajivsarvepalli/SimpleHierarchy/raw/master/imgs/network.pdf" type="application/pdf" width="85%" height="85%">
+    <embed src="https://github.com/rajivsarvepalli/SimpleHierarchy/raw/master/imgs/network.pdf">
         <p>This browser does not support PDFs. Please download the PDF to view it: <a href="test.pdf">Download PDF</a>.</p>
     </embed>
 </object>
+ where the class heirarchy is like so
 
-
+<object data="https://github.com/rajivsarvepalli/SimpleHierarchy/raw/master/imgs/tree.pdf" type="application/pdf" width="85%" height="85%">
+    <embed src="https://github.com/rajivsarvepalli/SimpleHierarchy/raw/master/imgs/tree.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="test.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
 
 This architecture allows for simple yet adaptable hierarchal classifications for basic tasks that involve finite hierarchies. The package was targeted towards image classifcations where there are multiple groups to classify something as, but may serve other purposes equally well. Below is an example of how to use the package along with the defined class:
 ```
