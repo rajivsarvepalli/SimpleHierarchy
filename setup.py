@@ -24,5 +24,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.7',
-    license="MIT"
+    license="MIT",
+    keywords = ['pytorch hierarchy networks', 'pytorch cnn', 'cnn hierarchy', 'hierarchy networks', 'simple hierarchy', 'pytorch hierarchy'], 
+    download_url = "", 
+
 )
