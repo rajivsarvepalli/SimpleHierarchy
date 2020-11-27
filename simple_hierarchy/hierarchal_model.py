@@ -4,7 +4,7 @@ from typing import Dict, Tuple, List, Optional
 import torch
 import torch.nn as nn
 
-from tree import Tree, Node
+from simple_hierarchy.tree import Tree, Node
 
 class HierarchalModel(nn.Module):
     r"""Creates a model that is designed to handle hierarchal classes. It is targeted towards

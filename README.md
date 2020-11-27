@@ -13,9 +13,9 @@ The architecture can be visualized as so with an input image:
 
 ![Class Heirarchy](https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/tree.svg)
 
-The class hierarchy is a similar structure to that within this package. Each node has a tuple of a named grouping and the number of classes within that grouping. This the reason for the sizes in the final outputs in the network architecture. The large green plus signs within circles are used to indicate concatenation of the two input (green arrowed lines) leading into them. This is why the sections for class b and c have input size 4096 + 1024 = 5120.
+The class hierarchy is a similar structure to an example within this package. Each node has a tuple of a named grouping and the number of classes within that grouping. This the reason for the sizes in the final outputs in the network architecture. The large green plus signs within circles are used to indicate concatenation of the two input (green arrowed lines) leading into them. This is why the sections for class b and c have input size 4096 + 1024 = 5120.
 # Installation
-First, install PyTorch. You can use `requirements.txt` to install PyTorch 1.6, however, the best way to install is to go to [PyTorch's website](https://pytorch.org/get-started/locally/) and follow the instructions there. This package may work with versions less than 1.6, but it was only tested on PyTorch 1.6. This package will allow for versions of PyTorch >= 1.0, but please know only 1.6 is tested. 
+First, install PyTorch. You can use `requirements.txt` to install PyTorch 1.7, however, the best way to install is to go to [PyTorch's website](https://pytorch.org/get-started/locally/) and follow the instructions there. This package may work with versions less than 1.7, but it was only tested on PyTorch 1.7. This package will allow for versions of PyTorch >= 1.0, but please know only 1.7 is tested. 
 Using pip makes this installation easy and simple once PyTorch is installed. This can be installed through 
 ```
 pip install simple-hierarchy-pytorch
@@ -44,12 +44,15 @@ model_base = nn.Sequential(
   nn.ReLU(), 
   nn.MaxPool2d(kernel_size=2, stride=2), 
   nn.Flatten(start_dim=1), 
-  nn.Linear(in_features=576, out_features=120), 
+  nn.Linear(in_features=1296, out_features=120), 
   nn.ReLU(), 
   nn.Linear(in_features=120, out_features=84), 
   nn.ReLU()
 )
 model = HierarchalModel(hierarchy, (84, 32, 32),base_model=model_base)
+# Example input 
+a = torch.rand(3,50,50).unsqueeze(0)
+model(a)
 ```
 Then the model can be trained on an image dataset like any other model.
 

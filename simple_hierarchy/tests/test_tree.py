@@ -1,6 +1,6 @@
 import unittest
 
-from tree import Tree, Node
+from simple_hierarchy.tree import Tree, Node
 
 class TestTree(unittest.TestCase):
     def test_tree(self):

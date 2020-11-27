@@ -3,8 +3,8 @@ import unittest
 import torch
 import torch.nn as nn
 
-from hierarchal_model import HierarchalModel
-from tree import Node, Tree
+from simple_hierarchy.hierarchal_model import HierarchalModel
+from simple_hierarchy.tree import Node, Tree
 
 class TestHeirarchalModel(unittest.TestCase):
     def test_heirarchal_model(self):
