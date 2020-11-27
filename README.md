@@ -16,7 +16,8 @@ The architecture can be visualized as so with an input image:
 The class hierarchy is a similar structure to an example within this package. Each node has a tuple of a named grouping and the number of classes within that grouping. This the reason for the sizes in the final outputs in the network architecture. The large green plus signs within circles are used to indicate concatenation of the two input (green arrowed lines) leading into them. This is why the sections for class b and c have input size 4096 + 1024 = 5120.
 # Installation
 The required version of Python for this package is >= 3.7.
-First, install PyTorch. You can use `requirements.txt` to install PyTorch 1.7, however, the best way to install is to go to [PyTorch's website](https://pytorch.org/get-started/locally/) and follow the instructions there. This package may work with versions less than 1.7, but it was only tested on PyTorch 1.7. This package will allow for versions of PyTorch >= 1.0, but please know only 1.7 is tested. 
+
+To install this package, first, install PyTorch. You can use `requirements.txt` to install PyTorch 1.7, however, the best way to install is to go to [PyTorch's website](https://pytorch.org/get-started/locally/) and follow the instructions there. This package may work with versions less than 1.7, but it was only tested on PyTorch 1.7. This package will allow for versions of PyTorch >= 1.0, but please know only 1.7 is tested. 
 Using pip makes this installation easy and simple once PyTorch is installed. This can be installed through 
 ```
 pip install simple-hierarchy-pytorch
