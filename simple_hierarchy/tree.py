@@ -1,5 +1,6 @@
-from itertools import chain
 from __future__ import annotations
+
+from itertools import chain
 from typing import Tuple, Iterable
 
 class Node(object):

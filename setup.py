@@ -1,21 +1,21 @@
 import setuptools
+from setuptools import find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="SimpleHierarchy", 
+    name="simple-hierarchy-pytorch", 
     version="0.0.1",
     author="Rajiv Sarvepalli",
-    packages = ['SimpleHierarchy'],   # Chose the same as "name"
-
+    include_package_data=True,
     author_email="rajiv@sarvepalli.net",
     description="simple hierarchal model in pytorch",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/rajivsarvepalli/SimpleHierarchy",
     install_requires=[            # I get to this in a second
-        'torch>=1.6',
+        'torch>=1.0',
     ],
     packages=setuptools.find_packages(),
     classifiers=[

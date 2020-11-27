@@ -1,8 +1,10 @@
-import torch
-from tree import Tree, Node
-from typing import Dict, Tuple, List, Optional
-import torch.nn as nn
 from collections import OrderedDict 
+from typing import Dict, Tuple, List, Optional
+
+import torch
+import torch.nn as nn
+
+from tree import Tree, Node
 
 class HierarchalModel(nn.Module):
     r"""Creates a model that is designed to handle hierarchal classes. It is targeted towards
@@ -39,7 +41,7 @@ class HierarchalModel(nn.Module):
         else:
             self.base_model = nn.Sequential(*model[0:len(model) - k])
         self.last_layers = OrderedDict()
-        self.tree = _hierarchy_to_tree(hierarchy)
+        self.tree = self._hierarchy_to_tree(hierarchy)
         self.output_order = output_order
         if dim_to_concat:
             self.dim_to_concat = dim_to_concat
@@ -105,9 +107,9 @@ class HierarchalModel(nn.Module):
         root = root_node.get_tuple()
         for i, (node, children) in list(enumerate(hierarchy.items())):
             if root == node:
-            for c in children:
-                child = Node(*c, root_node)
-                root_node.add_child(child)
-                to_tree(hierarchy, child)
+                for c in children:
+                    child = Node(*c, root_node)
+                    root_node.add_child(child)
+                    self._to_tree(hierarchy, child)
         if root in hierarchy:
             hierarchy.pop(root)
