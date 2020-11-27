@@ -25,7 +25,6 @@ setuptools.setup(
     ],
     python_requires='>=3.7',
     license="MIT",
-    keywords = ['pytorch hierarchy networks', 'pytorch cnn', 'cnn hierarchy', 'hierarchy networks', 'simple hierarchy', 'pytorch hierarchy'], 
-    download_url = "", 
-
+    keywords = ['pytorch hierarchy networks', 'pytorch cnn', 'cnn hierarchy', 'hierarchy networks', 'simple hierarchy', 'pytorch hierarchy', 'torch hierarchy', 'torch cnn'], 
+    download_url = "https://github.com/rajivsarvepalli/SimpleHierarchy/archive/v0.0.1.tar.gz", 
 )
