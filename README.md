@@ -6,14 +6,14 @@ The concept is quite simple: create general architecture for groupings of classe
 The architecture can be visualized as so:
 <object data="https://github.com/rajivsarvepalli/SimpleHierarchy/blob/raw/master/imgs/network.pdf" type="application/pdf" width="85%" height="85%">
     <embed src="https://github.com/rajivsarvepalli/SimpleHierarchy/blob/raw/master/imgs/network.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="test.pdf">Download PDF</a>.</p>
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/rajivsarvepalli/SimpleHierarchy/blob/raw/master/imgs/network.pdf">Download PDF</a>.</p>
     </embed>
 </object>
  where the class heirarchy is like so
 
 <object data="https://github.com/rajivsarvepalli/SimpleHierarchy/raw/master/imgs/tree.pdf" type="application/pdf" width="85%" height="85%">
     <embed src="https://github.com/rajivsarvepalli/SimpleHierarchy/raw/master/imgs/tree.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="test.pdf">Download PDF</a>.</p>
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/rajivsarvepalli/SimpleHierarchy/raw/master/imgs/tree.pdf">Download PDF</a>.</p>
     </embed>
 </object>
 
