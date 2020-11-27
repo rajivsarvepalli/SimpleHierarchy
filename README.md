@@ -56,7 +56,7 @@ model(a)
 ```
 Then the model can be trained on an image dataset like any other model.
 
-Additionally, there is [jupyter notebook](https://github.com/rajivsarvepalli/SimpleHierarchy/simple_hierarchy/examples/sample.ipynb) within this [repository](https://github.com/rajivsarvepalli/SimpleHierarchy) illustrates some examples of how to use and run these classes. Most of the jupyter notebook is self-contained so all the necessary code is already inside there independent of the package. At the beginning is an example with this package as well. 
+Additionally, there is [jupyter notebook](https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/simple_hierarchy/examples/sample.ipynb) within this [repository](https://github.com/rajivsarvepalli/SimpleHierarchy) illustrates some examples of how to use and run these classes. Most of the jupyter notebook is self-contained so all the necessary code is already inside there independent of the package. At the beginning is an example with this package as well. 
 The formulation is quite simple, so it should not be too much additional work to incorporate the HierarchalModel into your networks.
 However, the solution given here is quite simple and therefore can be implemented easily for specific cases. The HierarchalModel class just provides a general solution for more use cases and gave me chance to test and build some architectural ideas.   
 ## Authors
