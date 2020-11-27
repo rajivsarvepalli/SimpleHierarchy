@@ -10,6 +10,7 @@ The architecture can be visualized as so:
 
 ![Class Heirarchy](https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/tree.svg)
 
+The class heirarchy is a similar structure to that within the this package. Each node has tuple of a named grouping and the number of classes within that grouping. This the reason for the sizes in the final outputs in the network architecture. The large green plus signs within circles are used to indicate concatenation of the two input (green arrowed lines) leading into them. This is why the sections for class b and c have input size 4096 + 1024 = 5120.
 
 This architecture allows for simple yet adaptable hierarchal classifications for basic tasks that involve finite hierarchies. The package was targeted towards image classifcations where there are multiple groups to classify something as, but may serve other purposes equally well. Below is an example of how to use the package along with the defined class:
 ```
