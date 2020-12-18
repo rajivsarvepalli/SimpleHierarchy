@@ -6,7 +6,6 @@ import torch.nn as nn
 
 from simple_hierarchy.tree import Tree, Node
 
-
 class HierarchalModel(nn.Module):
     r"""Creates a model that is designed to handle hierarchal classes. It is targeted towards
     image hierarchal classification problems, but can be used for any finite hierarchy and network.

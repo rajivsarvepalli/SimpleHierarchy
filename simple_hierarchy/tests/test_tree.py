@@ -2,7 +2,6 @@ import unittest
 
 from simple_hierarchy.tree import Tree, Node
 
-
 class TestTree(unittest.TestCase):
     def test_tree(self):
         """
