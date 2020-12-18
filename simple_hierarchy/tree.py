@@ -1,6 +1,8 @@
-from itertools import chain
 from __future__ import annotations
+
+from itertools import chain
 from typing import Tuple, Iterable
+
 
 class Node(object):
     def __init__(self, name: str, n_classes: int, parent: Node) -> None:
@@ -19,7 +21,9 @@ class Node(object):
         return (self.name, self.n_classes)
 
     def __iter__(self) -> Iterable:
-        def isingle(x): return (yield x)
+        def isingle(x):
+            return (yield x)
+
         return chain(*([isingle(self)] + list(map(iter, self.children))))
 
 
