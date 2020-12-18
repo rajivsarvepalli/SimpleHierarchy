@@ -1,4 +1,4 @@
-from __future__ import annotations
+from __future__ import annotations  # NOQA
 
 from itertools import chain
 from typing import Tuple, Iterable
@@ -15,7 +15,10 @@ class Node(object):
         self.children.append(child)
 
     def __repr__(self) -> str:
-        return str(self.name) + " " + str(self.n_classes) + " " + str(self.children)
+        s = str(self.name) + " "
+        s += str(self.n_classes) + " "
+        s += str(self.children)
+        return s
 
     def get_tuple(self) -> Tuple[str, int]:
         return (self.name, self.n_classes)
