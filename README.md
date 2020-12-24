@@ -17,8 +17,8 @@ The class hierarchy is a similar structure to an example within this package. Ea
 # Installation
 The required version of Python for this package is >= 3.7.
 
-To install this package, first, install PyTorch. You can use `requirements.txt` to install PyTorch 1.7, however, the best way to install is to go to [PyTorch's website](https://pytorch.org/get-started/locally/) and follow the instructions there. This package may work with versions less than 1.7, but it was only tested on PyTorch 1.7. This package will allow for versions of PyTorch >= 1.0, but please know only 1.7 is tested. 
-Using pip makes this installation easy and simple once PyTorch is installed. This can be installed through 
+To install this package, first, install PyTorch. You can use `requirements.txt` to install PyTorch 1.7, however, the best way to install is to go to [PyTorch's website](https://pytorch.org/get-started/locally/) and follow the instructions there. This package may work with versions less than 1.7, but it was only tested on PyTorch 1.7. This package will allow for versions of PyTorch >= 1.0, but please know only 1.7 is tested.
+Using pip makes this installation easy and simple once PyTorch is installed. This can be installed through
 ```
 pip install simple-hierarchy-pytorch
 ```
@@ -33,34 +33,34 @@ Finally, this repository can simply be downloaded and imported as python code si
 # Getting Started
 This architecture allows for simple yet adaptable hierarchal classifications for basic tasks that involve finite hierarchies. The package was targeted towards image classifications where there are multiple groups to classify something as but may serve other purposes equally well. Below is an example of how to use the package along with the defined class:
 ```
-from simple_hierarchy.hierarchal_model import HierarchalModel 
+from simple_hierarchy.hierarchal_model import HierarchalModel
 hierarchy = {
     ('A', 2) : [('B', 5)],
     ('B', 5) : [('C', 7)]
 }
 model_base = nn.Sequential(
-  nn.Conv2d(in_channels=3, out_channels=6, kernel_size=5), 
-  nn.ReLU(), 
-  nn.MaxPool2d(kernel_size=2, stride=2), 
-  nn.Conv2d(in_channels=6, out_channels=16, kernel_size=5), 
-  nn.ReLU(), 
-  nn.MaxPool2d(kernel_size=2, stride=2), 
-  nn.Flatten(start_dim=1), 
-  nn.Linear(in_features=1296, out_features=120), 
-  nn.ReLU(), 
-  nn.Linear(in_features=120, out_features=84), 
+  nn.Conv2d(in_channels=3, out_channels=6, kernel_size=5),
+  nn.ReLU(),
+  nn.MaxPool2d(kernel_size=2, stride=2),
+  nn.Conv2d(in_channels=6, out_channels=16, kernel_size=5),
+  nn.ReLU(),
+  nn.MaxPool2d(kernel_size=2, stride=2),
+  nn.Flatten(start_dim=1),
+  nn.Linear(in_features=1296, out_features=120),
+  nn.ReLU(),
+  nn.Linear(in_features=120, out_features=84),
   nn.ReLU()
 )
 model = HierarchalModel(hierarchy, (84, 32, 32),base_model=model_base)
-# Example input 
+# Example input
 a = torch.rand(3,50,50).unsqueeze(0)
 model(a)
 ```
 Then the model can be trained on an image dataset like any other model.
 
-Additionally, there is [jupyter notebook](https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/simple_hierarchy/examples/sample.ipynb) within this [repository](https://github.com/rajivsarvepalli/SimpleHierarchy) illustrates some examples of how to use and run these classes. Most of the jupyter notebook is self-contained so all the necessary code is already inside there independent of the package. At the beginning is an example with this package as well. 
+Additionally, there is [jupyter notebook](https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/simple_hierarchy/examples/sample.ipynb) within this [repository](https://github.com/rajivsarvepalli/SimpleHierarchy) illustrates some examples of how to use and run these classes. Most of the jupyter notebook is self-contained so all the necessary code is already inside there independent of the package. At the beginning is an example with this package as well.
 The formulation is quite simple, so it should not be too much additional work to incorporate the HierarchalModel into your networks.
-However, the solution given here is quite simple and therefore can be implemented easily for specific cases. The HierarchalModel class just provides a general solution for more use cases and gave me chance to test and build some architectural ideas.   
+However, the solution given here is quite simple and therefore can be implemented easily for specific cases. The HierarchalModel class just provides a general solution for more use cases and gave me chance to test and build some architectural ideas.
 ## Authors
 
 * **Rajiv Sarvepalli** - *Created* - [rajivsarvepalli](https://github.com/rajivsarvepalli)

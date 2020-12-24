@@ -1,3 +1,4 @@
+"""Testing the hierarchical model."""
 import unittest
 
 import torch.nn as nn

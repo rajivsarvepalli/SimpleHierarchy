@@ -1,3 +1,4 @@
+"""A module for a hierarchal model in pytorch."""
 from collections import OrderedDict
 from typing import Dict, Tuple, List, Optional
 
@@ -8,7 +9,7 @@ from simple_hierarchy.tree import Tree, Node
 
 
 class HierarchalModel(nn.Module):
-    r"""Creates a model that is designed to handle hierarchal classes. It
+    """Creates a model that is designed to handle hierarchal classes. It
     is targeted towards image hierarchal classification problems, but can
     be used for any finite hierarchy and network. The concept is to work
     for classes where the certain classes are children of other classes.
@@ -54,6 +55,22 @@ class HierarchalModel(nn.Module):
             parent sizes). Without it being supplied, two linear layers
             are used per class. The first joins parent outputs into a child's
             inputs. The second ouputs into number of classes for child.
+
+    Atrributes:
+        base_model: The portion of the model that is the same for all classes.
+        feed_from: The index to feed outputs from parent
+            classes to their children. If not given, the last layer is used.
+        last_layers: A dict of the last layers of the model. Since each class has its
+            own last layers, a dictionary is used. The dictionary's keys are the class
+            tuples (name followed by number of classes), and the values are the layers
+            for each of those classes.
+        tree: The tree of the class hierarchies.
+        output_order: The output order of the classes
+            returned by forward by their tupled keys in the hierarchy
+            dictionary.
+        dim_to_concat: The dimension to combine parent ouput
+            and the base model's ouput. Typically this is 1.
+
     Examples::
         >>> hierarchy = {("A", 2) : [("B", 5), ("C", 7)],
                 ("H", 2) : [("A", 2), ("K", 7), ("L", 10)]}
@@ -80,6 +97,7 @@ class HierarchalModel(nn.Module):
         feed_from: Optional[int] = None,
         join_layers: Optional[nn.ModuleList] = None,
     ) -> None:
+        """Creates HierarchalModel object."""
         super(HierarchalModel, self).__init__()
         if base_model:
             self.base_model = base_model
@@ -149,6 +167,7 @@ class HierarchalModel(nn.Module):
     def forward(
         self, x: torch.Tensor
     ) -> Tuple[List[Tuple[int, float]], Dict[str, int]]:
+        """Overriding forward methodfor pytorch nn.Module."""
         x = self.base_model(x)
         # enumerate over a tree concating parents output into children outs
         output_temp = dict()
