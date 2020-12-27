@@ -1,15 +1,15 @@
 [![Tests](https://github.com/rajivsarvepalli/SimpleHierarchy/workflows/Tests/badge.svg)](https://github.com/rajivsarvepalli/SimpleHierarchy/actions?workflow=Tests)
 [![Codecov](https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy/branch/master/graph/badge.svg)](https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy)
-[![PyPI](https://img.shields.io/pypi/v/SimpleHierarchy.svg)](https://pypi.org/project/SimpleHierarchy/)
+[![PyPI](https://img.shields.io/pypi/v/simple-hierarchy.svg)](https://pypi.org/project/simple-hierarchy/)
 [![Documentation Status](https://readthedocs.org/projects/simplehierarchy/badge/?version=latest)](https://simplehierarchy.readthedocs.io/en/latest/?badge=latest)
 
-# Hierarchal Classification Networks
+# Hierarchical Classification Networks
 When looking at the task for classifying something where hierarchies were intrinsic to the classes, I searched for any libraries that might do very simple classification using grouped classes with hierarchies. However, I did not find any libraries that were suited for this relatively simple task. So I sought to create a more general solution that others can hopefully benefit from.
 
 
 The concept is quite simple: create general architecture for groupings of classes dependent on each other. So starting with a basic concept of model, I looked to make something in PyTorch that represented my idea.
 
-# Example
+# Example Use Case
 Let us take an image geolocation problem where we want the location for city, county, and district. We will call these groupings a,b,c respectively. Given an image input, we want to predict all 3 classes but also need an architecture in which these relationships are properly represented. The network architecture below illustrates a possible solution (that this package will attempt to implement with a degree of adaptability).
 The architecture can be visualized as so with an input image:
 ![Network Architecture](https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/network.svg)
