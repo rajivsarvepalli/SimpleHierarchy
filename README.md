@@ -1,3 +1,8 @@
+[![Tests](https:/https://github.com/rajivsarvepalli/SimpleHierarchy/workflows/Tests/badge.svg)](https://github.com/rajivsarvepalli/SimpleHierarchy/actions?workflow=Tests)
+[![Codecov](https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy/branch/master/graph/badge.svg)](https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy)
+[![PyPI](https://img.shields.io/pypi/v/SimpleHierarchy.svg)](https://pypi.org/project/SimpleHierarchy/)
+[![Read the Docs](https://readthedocs.org/projects/SimpleHierarchy/badge/)](https://simplehierarchy.readthedocs.io/)
+
 # Hierarchal Classification Networks
 When looking at the task for classifying something where hierarchies were intrinsic to the classes, I searched for any libraries that might do very simple classification using grouped classes with hierarchies. However, I did not find any libraries that were suited for this relatively simple task. So I sought to create a more general solution that others can hopefully benefit from.
 

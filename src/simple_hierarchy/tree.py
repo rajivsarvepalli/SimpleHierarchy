@@ -2,7 +2,7 @@
 from __future__ import annotations  # NOQA
 
 from itertools import chain
-from typing import Tuple, Iterable, Optional
+from typing import Iterable, Iterator, Optional, Tuple
 
 
 class Node(object):
@@ -57,10 +57,10 @@ class Node(object):
     def __iter__(self) -> Iterable:
         """Iterate through node and its children."""
 
-        def isingle(x):
+        def _isingle(x: Node) -> Iterator[Node]:
             return (yield x)
 
-        return chain(*([isingle(self)] + list(map(iter, self.children))))
+        return chain(*([_isingle(self)] + list(map(iter, self.children))))
 
 
 class Tree(object):
@@ -76,7 +76,7 @@ class Tree(object):
         root: The root node of the tree.
     """
 
-    def __init__(self, root: Node):
+    def __init__(self, root: Node) -> None:
         """Creates a Tree object."""
         self.root = root
 

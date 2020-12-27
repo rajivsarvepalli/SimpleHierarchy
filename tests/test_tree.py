@@ -1,14 +1,14 @@
 """Testing the tree class."""
 import unittest
 
-from simple_hierarchy.tree import Tree, Node
+from simple_hierarchy.tree import Node, Tree
 
 
 class TestTree(unittest.TestCase):
-    def test_tree(self):
-        """
-        Test that tree inserts properly.
-        """
+    """Tests the creation of tree object and its nodes."""
+
+    def test_tree(self) -> None:
+        """Test that tree inserts properly."""
         root = Node("A", 2, None)
         child1 = Node("B", 3, root)
         child2 = Node("C", 5, root)
@@ -27,7 +27,7 @@ class TestTree(unittest.TestCase):
         actual_str = str(tree)
         self.assertEqual(actual_str, correct_str)
 
-    def _is_child(self, parent: Node, child: Node):
+    def _is_child(self, parent: Node, child: Node) -> bool:
         f_child = False
         for p in parent.children:
             if p.get_tuple() == child.get_tuple():
