@@ -1,7 +1,7 @@
-[![Tests](https:/https://github.com/rajivsarvepalli/SimpleHierarchy/workflows/Tests/badge.svg)](https://github.com/rajivsarvepalli/SimpleHierarchy/actions?workflow=Tests)
+[![Tests](https://github.com/rajivsarvepalli/SimpleHierarchy/workflows/Tests/badge.svg)](https://github.com/rajivsarvepalli/SimpleHierarchy/actions?workflow=Tests)
 [![Codecov](https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy/branch/master/graph/badge.svg)](https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy)
 [![PyPI](https://img.shields.io/pypi/v/SimpleHierarchy.svg)](https://pypi.org/project/SimpleHierarchy/)
-[![Read the Docs](https://readthedocs.org/projects/SimpleHierarchy/badge/)](https://simplehierarchy.readthedocs.io/)
+[![Documentation Status](https://readthedocs.org/projects/simplehierarchy/badge/?version=latest)](https://simplehierarchy.readthedocs.io/en/latest/?badge=latest)
 
 # Hierarchal Classification Networks
 When looking at the task for classifying something where hierarchies were intrinsic to the classes, I searched for any libraries that might do very simple classification using grouped classes with hierarchies. However, I did not find any libraries that were suited for this relatively simple task. So I sought to create a more general solution that others can hopefully benefit from.
@@ -27,13 +27,8 @@ Using pip makes this installation easy and simple once PyTorch is installed. Thi
 ```
 pip install simple-hierarchy-pytorch
 ```
-The repository can also be cloned and then built from source. This can be done like so:
-```
-git clone https://github.com/rajivsarvepalli/SimpleHierarchy.git
-cd SimpleHierarchy
-python setup.py sdist bdist_wheel
-pip install dist/simple_hierarchy_pytorch-0.0.1-py3-none-any.whl
-```
+The repository can also be cloned and then built from source using poetry.
+
 Finally, this repository can simply be downloaded and imported as python code since there are essentially only two required classes here.
 # Getting Started
 This architecture allows for simple yet adaptable hierarchal classifications for basic tasks that involve finite hierarchies. The package was targeted towards image classifications where there are multiple groups to classify something as but may serve other purposes equally well. Below is an example of how to use the package along with the defined class:
@@ -63,7 +58,7 @@ model(a)
 ```
 Then the model can be trained on an image dataset like any other model.
 
-Additionally, there is [jupyter notebook](https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/simple_hierarchy/examples/sample.ipynb) within this [repository](https://github.com/rajivsarvepalli/SimpleHierarchy) illustrates some examples of how to use and run these classes. Most of the jupyter notebook is self-contained so all the necessary code is already inside there independent of the package. At the beginning is an example with this package as well.
+Additionally, there is [jupyter notebook](https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/src/simple_hierarchy/examples/sample.ipynb) within this [repository](https://github.com/rajivsarvepalli/SimpleHierarchy) illustrates some examples of how to use and run these classes. Most of the jupyter notebook is self-contained so all the necessary code is already inside there independent of the package. At the beginning is an example with this package as well.
 The formulation is quite simple, so it should not be too much additional work to incorporate the HierarchalModel into your networks.
 However, the solution given here is quite simple and therefore can be implemented easily for specific cases. The HierarchalModel class just provides a general solution for more use cases and gave me chance to test and build some architectural ideas.
 ## Authors
