@@ -25,7 +25,7 @@ The required version of Python for this package is >= 3.7.
 To install this package, first, install PyTorch. You can use `requirements.txt` to install PyTorch 1.7, however, the best way to install is to go to [PyTorch's website](https://pytorch.org/get-started/locally/) and follow the instructions there. This package may work with versions less than 1.7, but it was only tested on PyTorch 1.7. This package will allow for versions of PyTorch >= 1.0, but please know only 1.7 is tested.
 Using pip makes this installation easy and simple once PyTorch is installed. This can be installed through
 ```
-pip install simple-hierarchy-pytorch
+pip install simple-hierarchy
 ```
 The repository can also be cloned and then built from source using poetry.
 
