@@ -19,13 +19,13 @@ we want to predict all 3 classes but also need an architecture in which these re
 
 The architecture can be visualized as so with an input image:
 
-.. image:: _static/network.svg
-   :target: _static/network.svg
+.. image:: https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/network.svg
+   :target: https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/network.svg
 
 where the class hierarchy is like so
 
-.. image:: _static/tree.svg
-   :target: _static/tree.svg
+.. image:: https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/tree.svg
+   :target: https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/tree.svg
 
 The class hierarchy is a similar structure to an example within this package. Each node has a tuple of a named grouping and the number of classes within that grouping.
 This the reason for the sizes in the final outputs in the network architecture. The large green plus signs within circles are used to indicate concatenation of
