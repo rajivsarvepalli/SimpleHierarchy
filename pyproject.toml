@@ -17,7 +17,7 @@ keywords = ["pytorch", "hierarchical-models", "neural-network", "machine-learnin
         "torch hierarchy",
         "torch cnn",
 ]
-documentation = "https://hypermodern-python.readthedocs.io"
+documentation = "https://simplehierarchy.readthedocs.io"
 classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
