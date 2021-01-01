@@ -126,6 +126,10 @@ def docs(session: Session) -> None:
     """Build the documentation."""
     session.run("poetry", "install", "--no-dev", external=True)
     install_with_constraints(
-        session, "sphinx", "sphinx-autodoc-typehints", "sphinx-copybutton"
+        session,
+        "sphinx",
+        "sphinx-autodoc-typehints",
+        "sphinx-copybutton",
+        "pydata-sphinx-theme",
     )
     session.run("sphinx-build", "docs", "docs/_build")

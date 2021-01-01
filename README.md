@@ -2,6 +2,10 @@
 [![Codecov](https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy/branch/master/graph/badge.svg)](https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy)
 [![PyPI](https://img.shields.io/pypi/v/simple-hierarchy.svg)](https://pypi.org/project/simple-hierarchy/)
 [![Documentation Status](https://readthedocs.org/projects/simplehierarchy/badge/?version=latest)](https://simplehierarchy.readthedocs.io/en/latest/?badge=latest)
+[![Supported Python Versions](https://img.shields.io/pypi/pyversions/simple-hierarchy.svg)](https://pypi.org/project/simple-hierarchy/)
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+<a href="https://pepy.tech/project/simple-hierarchy"><img alt="Downloads" src="https://pepy.tech/badge/simple-hierarchy"></a>
+<a href="https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
 
 # Hierarchical Classification Networks
 When looking at the task for classifying something where hierarchies were intrinsic to the classes, I searched for any libraries that might do very simple classification using grouped classes with hierarchies. However, I did not find any libraries that were suited for this relatively simple task. So I sought to create a more general solution that others can hopefully benefit from.
@@ -58,7 +62,8 @@ model(a)
 ```
 Then the model can be trained on an image dataset like any other model.
 
-Additionally, there is [Jupyter notebook](https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/src/simple_hierarchy/examples/sample.ipynb) within this [repository](https://github.com/rajivsarvepalli/SimpleHierarchy) illustrates some examples of how to use and run these classes. Most of the Jupyter notebook is self-contained so all the necessary code is already inside there independent of the package. At the beginning is an example with this package as well.
+Additionally, there is a [Jupyter notebook](https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/src/simple_hierarchy/examples/sample.ipynb) or [colab notebook](https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/src/simple_hierarchy/examples/sample.ipynb) within this [repository](https://github.com/rajivsarvepalli/SimpleHierarchy) that illustrates some examples of how to use and run these classes. These notebooks each contain 2 examples of how to use this package with some short explanations on what each parameter means.
+
 The formulation is quite simple, so it should not be too much additional work to incorporate the HierarchalModel into your networks.
 However, the solution given here is quite simple and therefore can be implemented easily for specific cases. The HierarchalModel class just provides a general solution for more use cases and gave me chance to test and build some architectural ideas.
 ## Authors

@@ -66,7 +66,11 @@ class TestHeirarchalModel(unittest.TestCase):
         self.assertEqual(str(correct_base_model), str(model.base_model))
         self.assertEqual(str(correct_last_layers), str(model.last_layers))
         a = torch.rand(10, 10)
-        model(a)
+        out = model(a)
+        self.assertEqual(len(out), 4)
+        sizes_out = [(10, 2), (10, 3), (10, 3), (10, 5)]
+        for s, out in zip(sizes_out, out):
+            self.assertEqual(s, out.shape)
 
     def test_heirarchal_model_v2(self) -> None:
         """Tests features of choosing when to split inputs and where to feed from."""

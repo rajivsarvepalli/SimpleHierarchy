@@ -34,8 +34,8 @@ class HierarchalModel(nn.Module):
         size: A tuple of the (ouput size of
             the base_model or model[len(model) - k - 1], input size of
             model[len(model) - k], output size of model[len(model) - 1]. If
-            feed from is given then a fourth size must be given of the size of
-            the feed_from index output size. If `join_layers` parameter is provided
+            `feed_from` is given then a fourth size must be given of the size of
+            the `feed_from` index output size. If `join_layers` parameter is provided
             then this `size` parameter is unneeded.
         output_order: The output order of the classes
             returned by forward by their tupled keys in the hierarchy
