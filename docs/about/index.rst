@@ -59,7 +59,7 @@ Usage
 -----
 
 Simple Hierarchy works with PyTorch to create simple hierarchical networks
-that are easily configurable and changeable. A short example is below; for more detailed examples go to the :ref:`user guide examples <user_guide_example>`.
+that are easily configurable and changeable. A short example is below; for more detailed examples go to the :ref:`user guide examples <user_guide_examples>`.
 
 This architecture allows for simple yet adaptable hierarchal classifications for basic tasks that involve finite hierarchies. The package was targeted towards image classifications where there are multiple groups to classify something as but may serve other purposes equally well. Below is an example of how to use the package along with the defined class:
 
