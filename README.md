@@ -1,4 +1,4 @@
-<p align="center"><a href="https://raw.githubusercontent.com/rajivsarvepalliSimpleHierarchy/master/images/hierarchy_network.jpg"><img src="https://raw.githubusercontent.com/rajivsarvepalliSimpleHierarchy/master/images/hierarchy_network.jpg" alt="hierarchy network" height="60"/></a></p>
+<p align="center"><a href="https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/hierarchy_network.jpg"><img src="https://raw.githubusercontent.com/rajivsarvepalli/SimpleHierarchy/master/images/hierarchy_network.jpg" alt="hierarchy network" height="60"/></a></p>
 <h1 align="center">simple-hierarchy</h1>
     <p align="center">Simple PyTorch hierarchical models.</p>
 <p align="center">
