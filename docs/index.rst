@@ -11,9 +11,9 @@ The Simple Hierarchy Project
    contributor_guide/index
    license
 
-********************
+******************************
 simple-hierarchy documentation
-********************
+******************************
 
 **Date**: |today| **Version**: |version|
 

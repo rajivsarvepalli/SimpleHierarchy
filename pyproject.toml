@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "simple-hierarchy"
-version = "1.0.1"
+version = "1.0.2"
 description = "Simple hierarchal models in PyTorch."
 authors = ["Rajiv Sarvepalli <rajiv@sarvepalli.net>"]
 homepage = "https://github.com/rajivsarvepalli/SimpleHierarchy"
@@ -28,7 +28,7 @@ classifiers=[
 
 [tool.poetry.dependencies]
 python = "^3.7"
-torch = {version = "^1.7.1", python = "^3.7"}
+torch = {version = "^1.7.0", python = "^3.7"}
 numpy = "1.19.3"
 importlib-metadata = {version = "^3.3.0", python = "<3.8"}
 

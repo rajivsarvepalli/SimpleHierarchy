@@ -234,3 +234,171 @@ class HierarchalModel(nn.Module):
                     self._to_tree(hierarchy, child)
         if root in hierarchy:
             hierarchy.pop(root)
+
+
+class SimpleHierarchalModel(nn.Module):
+    """Creates a simple model for hierarchal class structures.
+
+    Creates a model that is designed to handle hierarchal classes. It
+    is targeted towards image hierarchal classification problems, but can
+    be used for any finite hierarchy and network. The concept is to work
+    for classes where the certain classes are children of other classes.
+    For example, consider classifying cities and districts. The districts
+    of city are depedent on the city classifcation. The network architecure
+    is quite simple in this class's solution, nsimply take the ouput of each
+    parent and feed it into the last `k` layers of all its children. In other
+    words, `k` is a hyperparemeter that illusrates how many layers should be
+    distinct for each class. If any of the arguments are confusing, the
+    examples should help indicate how to use this class.
+
+    Args:
+        hierarchy: A defined hierarchy through a
+            dictionary definition. This is defined as names for each grouping
+            (arbitrary but distinct names are fine) and the number of classes
+            within each group. The format is (name, n_classes) for each tuple.
+            The dictionary defines the relationship between childrena and
+            parents where `hierarchy[parent]` is a list of children in
+            the same format as the parent which is defined above.
+        size: A tuple of the (ouput size of
+            the base_model or model[len(model) - k - 1], input size of
+            model[len(model) - k], output size of model[len(model) - 1]. If
+            `feed_from` is given then a fourth size must be given of the size of
+            the `feed_from` index output size. If `join_layers` parameter is provided
+            then this `size` parameter is unneeded.
+        output_order: The output order of the classes
+            returned by forward by their tupled keys in the hierarchy
+            dictionary.
+        base_model: A torch network that will serve as
+            the base model.
+        dim_to_concat: The dimension to combine parent ouput
+            and the base model's ouput. Typically this is 1.
+
+    Attributes:
+        base_model: The portion of the model that is the same for all classes.
+        feed_from: The index to feed outputs from parent.
+            classes to their children. If not given, the last layer is used.
+        last_layers: A dict of the last layers of the model. Since each class has its
+            own last layers, a dictionary is used. The dictionary's keys are the class
+            tuples (name followed by number of classes), and the values are the layers
+            for each of those classes.
+        tree: The tree of the class hierarchies.
+        output_order: The output order of the classes
+            returned by forward by their tupled keys in the hierarchy
+            dictionary.
+        dim_to_concat: The dimension to combine parent ouput
+            and the base model's ouput. Typically this is 1.
+
+    Examples:
+        >>> import torch.nn as nn
+        >>> import torch
+        >>> from simple_hierarchy.hierarchal_model import SimpleHierarchalModel
+        >>> hierarchy = {("A", 2): [("B", 3), ("C", 5)], ("B", 3): [("D", 3)]}
+        >>> base_m = nn.ModuleList([nn.Linear(10, 10) for i in range(4)])
+        >>> model_b = nn.Sequential(*base_m)
+        >>> model = SimpleHierarchalModel(base_model=model_b, hierarchy=hierarchy,
+        >>>     size=(10,10,10))
+        >>> len(model(torch.rand(10,10)))
+        4
+        >>> model.tree
+        A 2 [B 3 [D 3 []], C 5 []]
+    """
+
+    def __init__(
+        self,
+        hierarchy: Dict[Tuple[str, int], List[Tuple[str, int]]],
+        base_model: nn.Module,
+        size: Optional[Tuple[int, ...]] = None,
+        output_order: Optional[List] = None,
+        dim_to_concat: Optional[int] = None,
+    ) -> None:
+        """Creates SimpleHierarchalModel object."""
+        super(SimpleHierarchalModel, self).__init__()
+        self.base_model = base_model
+        self.feed_from = 0
+        if size and len(size) != 3:
+            raise ValueError(
+                "Size must contain 3 items when feed_from is not provided."
+            )
+        self.last_layers = OrderedDict()
+        self.tree = self._hierarchy_to_tree(hierarchy)
+        self.output_order = output_order
+        if dim_to_concat:
+            self.dim_to_concat = dim_to_concat
+        else:
+            self.dim_to_concat = 1
+        for node in self.tree:
+            if node.parent:
+                n_classes1 = node.parent.n_classes
+            else:
+                n_classes1 = 0
+            n_classes2 = node.n_classes
+            layers = nn.ModuleList()
+            s1, s2, s3 = size
+            if node.parent:
+                first_combiner = torch.nn.Linear(s1 + n_classes1, s2)
+                layers.append(first_combiner)
+            else:
+                layers.append(torch.nn.Linear(s1, s2))
+            layers.append(torch.nn.Linear(s3, n_classes2))
+            self.last_layers[str(node.get_tuple())] = nn.Sequential(*layers)
+        self.last_layers = nn.ModuleDict(self.last_layers)
+
+    def forward(self, x: torch.Tensor) -> Tuple[torch.Tensor, ...]:
+        """Overriding forward method for pytorch nn.Module."""
+        x = self.base_model(x)
+        # enumerate over a tree concating parents output into children outs
+        output_temp = dict()
+        output_upto_k = dict()
+        for node in self.tree:
+            node_key = node.get_tuple()
+            if node.parent:
+                parent_out = output_upto_k[node.parent.get_tuple()]
+                e_in = torch.cat((parent_out, x), self.dim_to_concat)
+                output_temp[node_key] = self.last_layers[str(node_key)](e_in)
+                if node.children:
+                    output_upto_k[node_key] = self.last_layers[str(node_key)][
+                        : -self.feed_from or None
+                    ](e_in)
+            else:
+                output_temp[node_key] = self.last_layers[str(node_key)](x)
+                output_upto_k[node_key] = self.last_layers[str(node_key)][
+                    : -self.feed_from or None
+                ](x)
+        outputs = list()
+        if not self.output_order:
+            self.output_order = output_temp.keys()
+        for o in self.output_order:
+            outputs.append(output_temp[o])
+        return tuple(outputs)
+
+    def _hierarchy_to_tree(
+        self, hierarchy: Dict[Tuple[str, int], List[Tuple[str, int]]]
+    ) -> Tree:
+        all_children = list()
+        for (_, children) in hierarchy.items():
+            all_children.extend(children)
+        found_root = False
+        root = None
+        for _, (node, _) in enumerate(hierarchy.items()):
+            if node not in all_children:
+                root = node
+                if found_root:
+                    raise ValueError("Invalid hierarchy tree.")
+                found_root = True
+        root_node = Node(root[0], root[1], None)
+        hier = hierarchy.copy()
+        self._to_tree(hier, root_node)
+        return Tree(root_node)
+
+    def _to_tree(
+        self, hierarchy: Dict[Tuple[str, int], List[Tuple[str, int]]], root_node: Node
+    ) -> None:
+        root = root_node.get_tuple()
+        for _, (node, children) in list(enumerate(hierarchy.items())):
+            if root == node:
+                for c in children:
+                    child = Node(*c, root_node)
+                    root_node.add_child(child)
+                    self._to_tree(hierarchy, child)
+        if root in hierarchy:
+            hierarchy.pop(root)
