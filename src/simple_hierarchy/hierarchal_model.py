@@ -291,15 +291,16 @@ class SimpleHierarchalModel(nn.Module):
     Examples:
         >>> import torch.nn as nn
         >>> import torch
-        >>> from simple_hierarchy.hierarchal_model import HierarchalModel
-        >>> hierarchy = {("A", 2) : [("B", 5), ("C", 7)], ("H", 2) :
-        >>>     [("A", 2), ("K", 7), ("L", 10)]}
-        >>> base_m = nn.ModuleList([nn.Linear(10, 10) for i in range(2)])
-        >>> model = HierarchalModel(model=base_m, k=1, hierarchy=hierarchy, size=(10,10,10))
+        >>> from simple_hierarchy.hierarchal_model import SimpleHierarchalModel
+        >>> hierarchy = {("A", 2): [("B", 3), ("C", 5)], ("B", 3): [("D", 3)]}
+        >>> base_m = nn.ModuleList([nn.Linear(10, 10) for i in range(4)])
+        >>> model_b = nn.Sequential(*base_m)
+        >>> model = SimpleHierarchalModel(base_model=model_b, hierarchy=hierarchy,
+        >>>     size=(10,10,10))
         >>> len(model(torch.rand(10,10)))
-        6
+        4
         >>> model.tree
-        H 2 [A 2 [B 5 [], C 7 []], K 7 [], L 10 []]
+        A 2 [B 3 [D 3 []], C 5 []]
     """
 
     def __init__(

@@ -65,7 +65,7 @@ def linkcode_resolve(domain: str, info: Dict) -> str:
     )
     url = (
         "https://github.com/rajivsarvepalli/SimpleHierarchy"
-        "/blob/%s/src/SimpleHierarchy/%s%s"
+        "/blob/%s/src/simple_hierarchy/%s%s"
     )
     url = url % (tag_or_branch, fn, linespec)
     return url
