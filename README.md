@@ -2,12 +2,15 @@
 <h1 align="center">simple-hierarchy</h1>
     <p align="center">Simple PyTorch hierarchical models.</p>
 <p align="center">
+    <a href="https://simplehierarchy.readthedocs.io/en/latest/?badge=latest"><img alt="most recent docs" src="https://readthedocs.org/projects/simplehierarchy/badge/?version=latest"></a>
  <a href="https://github.com/rajivsarvepalli/SimpleHierarchy/actions?workflow=Tests"><img alt="tests status" src="https://github.com/rajivsarvepalli/SimpleHierarchy/workflows/Tests/badge.svg"></a>
  <a href="https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy"><img alt="codecov of simple-hierarchy" src="https://codecov.io/gh/rajivsarvepalli/SimpleHierarchy/branch/master/graph/badge.svg"></a>
+ 
+ 
+ </p>
+  <p align="center">
  <a href="https://pypi.org/project/simple-hierarchy/"><img alt="pypi version" src="https://img.shields.io/pypi/v/simple-hierarchy.svg"></a>
- <a href="https://simplehierarchy.readthedocs.io/en/latest/?badge=latest"><img alt="most recent docs" src="https://readthedocs.org/projects/simplehierarchy/badge/?version=latest"></a>
  <a href="https://pypi.org/project/simple-hierarchy/"><img alt="supported python versions" src="https://img.shields.io/pypi/pyversions/simple-hierarchy.svg"></a>
- <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
  <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
  <a href="https://pepy.tech/project/simple-hierarchy"><img alt="Downloads" src="https://pepy.tech/badge/simple-hierarchy"></a>
  <a href="https://github.com/rajivsarvepalli/SimpleHierarchy/blob/master/LICENSE"><img alt="License: MIT" src="https://black.readthedocs.io/en/stable/_static/license.svg"></a>
