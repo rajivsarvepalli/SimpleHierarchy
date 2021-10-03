@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 sphinx==4.2.0
 sphinx-autodoc-typehints==1.12.0
 sphinx-copybutton==0.4.0
 pydata-sphinx-theme==0.6.3
+=======
+sphinx==3.4.1
+sphinx-autodoc-typehints==1.12.0
+sphinx-copybutton==0.3.1
+pydata-sphinx-theme==0.4.1
+>>>>>>> 1b34a682c4ab1b5fd0d97d855f0b4f3c37008cac
 simple_hierarchy

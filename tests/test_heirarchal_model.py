@@ -4,7 +4,7 @@ import unittest
 import torch
 import torch.nn as nn
 
-from simple_hierarchy.hierarchal_model import HierarchalModel
+from simple_hierarchy.hierarchal_model import HierarchalModel, SimpleHierarchalModel
 from simple_hierarchy.tree import Node, Tree
 
 
@@ -217,6 +217,62 @@ class TestHeirarchalModel(unittest.TestCase):
             _ = HierarchalModel(
                 model=model_b, k=2, hierarchy=hierarchy, size=(10, 10, 10)
             )
+        with self.assertRaises(ValueError):
+            _ = SimpleHierarchalModel(
+                base_model=model_b, hierarchy=hierarchy, size=(10, 10, 10, 10)
+            )
+        hierarchy = {("A", 2): [("C", 5)], ("B", 3): [("D", 3)]}
+        with self.assertRaises(ValueError):
+            _ = SimpleHierarchalModel(
+                base_model=model_b, hierarchy=hierarchy, size=(10, 10, 10)
+            )
+
+    def test_simple_heirarchal_model(self) -> None:
+        """Test that simple hierarchal model works as exepcted."""
+        hierarchy = {("A", 2): [("B", 3), ("C", 5)], ("B", 3): [("D", 3)]}
+        model_b = nn.ModuleList([nn.Linear(10, 10) for i in range(4)])
+        model_b = nn.Sequential(*model_b)
+        model1 = SimpleHierarchalModel(
+            base_model=model_b, hierarchy=hierarchy, size=(10, 10, 10)
+        )
+        model = SimpleHierarchalModel(
+            base_model=model_b,
+            hierarchy=hierarchy,
+            size=(10, 10, 10),
+            dim_to_concat=1,
+            output_order=[("A", 2), ("B", 3), ("D", 3), ("C", 5)],
+        )
+        correct_last_layers = nn.ModuleDict(
+            {
+                "('A', 2)": nn.Sequential(
+                    nn.Linear(10, 10),
+                    nn.Linear(10, 2),
+                ),
+                "('B', 3)": nn.Sequential(
+                    nn.Linear(12, 10),
+                    nn.Linear(10, 3),
+                ),
+                "('D', 3)": nn.Sequential(
+                    nn.Linear(13, 10),
+                    nn.Linear(10, 3),
+                ),
+                "('C', 5)": nn.Sequential(
+                    nn.Linear(12, 10),
+                    nn.Linear(10, 5),
+                ),
+            }
+        )
+        # compare string representations since pytorch
+        # does not have simple equality inbuilt to its classes
+        self.assertEqual(str(model_b), str(model.base_model))
+        self.assertEqual(str(correct_last_layers), str(model.last_layers))
+        a = torch.rand(10, 10)
+        out = model(a)
+        _ = model1(a)
+        self.assertEqual(len(out), 4)
+        sizes_out = [(10, 2), (10, 3), (10, 3), (10, 5)]
+        for s, out in zip(sizes_out, out):
+            self.assertEqual(s, out.shape)
 
 
 if __name__ == "__main__":
